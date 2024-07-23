@@ -5,7 +5,7 @@ import urllib.parse
 import socket
 import datetime
 from pymongo import MongoClient
-import threading
+from multiprocessing import Process
 import json
 
 class HttpHandler(BaseHTTPRequestHandler):
@@ -84,5 +84,5 @@ def run_socket_server():
 
 # Запуск серверів у різних потоках
 if __name__ == "__main__":
-    threading.Thread(target=run_http_server).start()
-    threading.Thread(target=run_socket_server).start()
+    Process(target=run_http_server).start()
+    Process(target=run_socket_server).start()
